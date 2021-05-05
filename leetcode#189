@@ -1,0 +1,13 @@
+//Take nums=[1,2,3,4,5] and k=2. Then output should be [4,5,1,2,3].
+//Now if we reverse the original array we will get [5,4,3,2,1]. In this we can see that the first two //element are 5,4 and last three element are 3,2,1 which is same as output array but in reverse order.
+//So, first reverse k elements and then reverse remaining element.
+
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        k=k%nums.size();
+        reverse(nums.begin(), nums.end());
+        reverse(nums.begin(), nums.begin()+k);
+        reverse(nums.begin()+k, nums.end());
+    }
+};
