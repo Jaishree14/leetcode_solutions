@@ -1,0 +1,29 @@
+/* first we will get to a position where we encounter the highest number 
+and then in second function we check whether it is actually hill or not */
+
+
+
+
+class Solution {
+public:
+    bool validMountainArray(vector<int>& a) {
+         int peak=INT_MIN;
+         int pos=-1;
+         for(int i=0; i<a.size(); i++) {
+                if(peak<a[i]) {
+                    peak=a[i];
+                    pos=i;
+                }
+         }
+         return pos>0 && pos<a.size()-1 && ishill(a,pos);
+    }
+    bool ishill(vector<int> a,int pos) {
+        for(int i=0; i<pos; i++) {
+            if(a[i]>=a[i+1]) return false;
+        }
+        for(int i=pos; i<a.size()-1; i++) {
+             if(a[i]<=a[i+1]) return false;
+        }
+        return true;
+    }
+};
